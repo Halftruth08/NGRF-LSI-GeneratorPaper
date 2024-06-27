@@ -497,7 +497,7 @@ def upsample(arr, length, desired_length):
     assert desired_length <= np.array(arr.shape).min() / 2
     old_scales = arr.shape
     new_scales = np.array(arr.shape) * length / desired_length
-    new_arr = np.zeros_like(arr, dtype=np.complex)
+    new_arr = np.zeros_like(arr, dtype=complex)
     arr = np.fft.fftshift(arr)[int(old_scales[0] / 2 - new_scales[0] / 2):int(old_scales[0] / 2 + new_scales[0] / 2 + 1), int(old_scales[1] / 2 - new_scales[1] / 2):int(old_scales[1] / 2 + new_scales[1] / 2 + 1)]
     arr = np.fft.fftshift(np.fft.fftn(np.fft.ifftshift(arr)))
     new_arr[int(old_scales[0] / 2 - new_scales[0] / 2):int(old_scales[0] / 2 + new_scales[0] / 2 + 1), int(old_scales[1] / 2 - new_scales[1] / 2):int(old_scales[1] / 2 + new_scales[1] / 2 + 1)] = arr
@@ -512,7 +512,7 @@ def upsample_3D(arr, length, desired_length):
     assert desired_length <= np.array(arr.shape).min() / 2
     old_scales = arr.shape
     new_scales = np.array(arr.shape) * length / desired_length
-    new_arr = np.zeros_like(arr, dtype=np.complex)
+    new_arr = np.zeros_like(arr, dtype=complex)
     arr = np.fft.fftshift(arr)[int(old_scales[0] / 2 - new_scales[0] / 2):int(old_scales[0] / 2 + new_scales[0] / 2 + 1), \
                             int(old_scales[1] / 2 - new_scales[1] / 2):int(old_scales[1] / 2 + new_scales[1] / 2 + 1), \
                             int(old_scales[2] / 2 - new_scales[2] / 2):int(old_scales[2] / 2 + new_scales[2] / 2 + 1)]
