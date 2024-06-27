@@ -70,7 +70,7 @@ if twoD:
 
     ax1.set_title('Original Microstructure')
     ax2.set_title('Generated Sample')
-    ax2.set_title('Generated Sample 2')
+    ax3.set_title('Generated Sample 2')
 
 else:
     f = plt.figure(figsize=[8, 4.5])
