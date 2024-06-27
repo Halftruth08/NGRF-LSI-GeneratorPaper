@@ -30,7 +30,7 @@ struct_names = ['./Example_Data/TwoPhaseSimple.npy',
                 './Example_Data/ThreeD_Example.npy']
 
 # Microstructure and Generator choices:
-struct_index = -2
+struct_index = 2
 generator = EigenGenerator
 
 # Load the microstructure and compute statistics:
@@ -46,7 +46,7 @@ twoD = True if len(struct.shape)==3 else False
 gen = generator(stats, 'complete') # complete is the default parameter indicating that a complete row of 
 # 2PS have been given (a complete row is returned by twopointstats). ('incomplete' is the other option)
 
-#gen.filter('flood', alpha=0.3, beta=0.35) # default parameters from the paper. (if no filter is desired either
+gen.filter('flood', alpha=0.3, beta=0.35) # default parameters from the paper. (if no filter is desired either
 # input 'none' or don't call this method. 
 
 sampled_micro_1, sampled_micro_2 = gen.generate()
@@ -66,10 +66,11 @@ if twoD:
     else:
         ax1.imshow(struct)
         ax2.imshow(sampled_micro_1)
-        ax3.imshow(sampled_micro_1)
+        ax3.imshow(sampled_micro_2)
 
     ax1.set_title('Original Microstructure')
     ax2.set_title('Generated Sample')
+    ax2.set_title('Generated Sample 2')
 
 else:
     f = plt.figure(figsize=[8, 4.5])
