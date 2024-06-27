@@ -46,7 +46,7 @@ twoD = True if len(struct.shape)==3 else False
 gen = generator(stats, 'complete') # complete is the default parameter indicating that a complete row of 
 # 2PS have been given (a complete row is returned by twopointstats). ('incomplete' is the other option)
 
-gen.filter('flood', alpha=0.3, beta=0.35) # default parameters from the paper. (if no filter is desired either 
+#gen.filter('flood', alpha=0.3, beta=0.35) # default parameters from the paper. (if no filter is desired either
 # input 'none' or don't call this method. 
 
 sampled_micro_1, sampled_micro_2 = gen.generate()
@@ -54,16 +54,19 @@ sampled_micro_1, sampled_micro_2 = gen.generate()
 
 # Plotting
 if twoD:
-    f = plt.figure(figsize=[8, 4.5])
-    ax1 = f.add_subplot(121)
-    ax2 = f.add_subplot(122)
+    f = plt.figure(figsize=[10, 4.5])
+    ax1 = f.add_subplot(131)
+    ax2 = f.add_subplot(132)
+    ax3 = f.add_subplot(133)
     if struct.shape[-1] == 2:
         # There are two local states (i.e., phases) 
         ax1.imshow(struct[..., 0])
         ax2.imshow(sampled_micro_1[..., 0])
+        ax3.imshow(sampled_micro_2[..., 0])
     else:
         ax1.imshow(struct)
         ax2.imshow(sampled_micro_1)
+        ax3.imshow(sampled_micro_1)
 
     ax1.set_title('Original Microstructure')
     ax2.set_title('Generated Sample')
